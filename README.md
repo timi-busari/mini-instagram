@@ -21,7 +21,7 @@ Before you begin, ensure you have met the following requirements:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/mini-instagram.git
+git clone https://github.com/timi-busari/mini-instagram.git
 cd mini-instagram
 ```
 
