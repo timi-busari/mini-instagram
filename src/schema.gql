@@ -1,0 +1,81 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Post {
+  """Unique identifier for the post"""
+  id: ID!
+
+  """Caption of the post"""
+  caption: String!
+
+  """URL of the post image"""
+  imageUrl: String!
+
+  """Creation date of the post"""
+  createdAt: DateTime!
+
+  """Last update date of the post"""
+  updatedAt: DateTime!
+
+  """ID of the user who created the post"""
+  userId: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type User {
+  id: ID!
+  username: String!
+  email: String!
+  password: String!
+  posts: [Post!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Query {
+  feeds(page: Int, perPage: Int): [Post!]!
+  posts(userId: String!, page: Int, perPage: Int): [Post!]!
+  post(id: String!): Post!
+  users(page: Int, perPage: Int): [User!]!
+  user(id: String!): User!
+}
+
+type Mutation {
+  createPost(createPostInput: CreatePostInput!): Post!
+  updatePost(updatePostInput: UpdatePostInput!): Post!
+  removePost(id: String!): Post!
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser(id: String!): User!
+}
+
+input CreatePostInput {
+  caption: String!
+  imageUrl: String!
+  userId: String!
+}
+
+input UpdatePostInput {
+  caption: String
+  imageUrl: String
+  userId: String
+  id: ID!
+}
+
+input CreateUserInput {
+  username: String!
+  email: String!
+  password: String!
+}
+
+input UpdateUserInput {
+  username: String
+  email: String
+  password: String
+  id: String!
+}
